@@ -22,7 +22,7 @@ export const Register = () => {
 
     return (
         <div className='container p-4'>
-            <h3 className='animate__animated animate__bounceInLeft'>Regístrate Putita</h3>
+            <h3 className='animate__animated animate__bounceInLeft'>Regístrate</h3>
             <form onSubmit={handleSubmit}>
                 <div className="mb-3">
                     <label htmlFor="nickname" className="form-label">Nickname</label>
