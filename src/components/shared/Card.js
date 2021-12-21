@@ -1,12 +1,13 @@
 import React from 'react'
+import './shared.css';
 
-export const Card = ({ nickname, age, description }) => {
+export const Card = ({ nickname, avatar, age, description }) => {
     return (
         <>
             <div className="card mb-3">
                 <h3 className="card-header">{nickname}</h3>
 
-                <img src="https://www.elsiglodedurango.com.mx/m/i/2018/03/677714.jpeg" alt="" />
+                <div className="avatar" style={{ 'backgroundImage': `url(${avatar})` }}></div>
 
                 <div className="card-body">
                     <p className="card-text">

@@ -1,3 +1,11 @@
 #component{
     border: 1px solid black;
 }
+
+.active{
+    border-bottom: 1.4px solid white;
+}
+.kissImg{
+    width: 2em ;
+    margin-left: 1em;
+}
