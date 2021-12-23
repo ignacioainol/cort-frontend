@@ -24,68 +24,66 @@ export const Register = () => {
         <div className='container p-4'>
             <h3 className='animate__animated animate__bounceInLeft'>Regístrate</h3>
             <form onSubmit={handleSubmit}>
-                <div className="mb-3">
-                    <label htmlFor="nickname" className="form-label">Nickname</label>
-                    <input
-                        type="text"
-                        className="form-control"
-                        id="nickname"
-                        name="nickname"
-                        placeholder='Con este nombre se te identificará'
-                        onChange={handleChange}
-                        aria-describedby="nicknamelHelp" />
-                    <div id="nicknamelHelp" className="form-text">Nombre artistico</div>
+                <div className="row">
+                    <div className="col-xs-12 col-sm-6 mb-3">
+                        <label htmlFor="categoria" className="form-label">Categoría</label>
+                        <select class="form-select" aria-label="Default select example">
+                            <option selected>Seleccione una categoría</option>
+                            <option value="1">Agencia</option>
+                            <option value="2">Escort</option>
+                            <option value="3">Masajes</option>
+                            <option value="4">Moteles</option>
+                            <option value="5">Fantasías</option>
+                        </select>
+                    </div>
+
+                    <div className="col-xs-12 col-sm-6 mb-3">
+                        <label htmlFor="nickname" className="form-label">Tu nick / pseudónimo*</label>
+                        <input
+                            type="text"
+                            className="form-control"
+                            id="nickname"
+                            name="nickname"
+                            placeholder='Con este nombre se te identificará'
+                            onChange={handleChange}
+                            aria-describedby="nicknamelHelp" />
+                        <div id="nicknamelHelp" className="form-text">Su nombre artistico</div>
+                    </div>
                 </div>
 
-                <div className="mb-3">
-                    <label htmlFor="firstname" className="form-label">Nombre</label>
-                    <input
-                        type="text"
-                        className="form-control"
-                        id="firstname"
-                        name="firstname"
-                        placeholder='Ingrese su Nombre'
-                        onChange={handleChange}
-                        aria-describedby="firstnamelHelp" />
+                <div className="row">
+                    <div className="col-xs-12 col-sm-6 mb-3">
+                        <label htmlFor="telefono" className="form-label">Teléfono*</label>
+                        <input
+                            type="text"
+                            className="form-control"
+                            id="telefono"
+                            name="telefono"
+                            placeholder='Con este nombre se te identificará'
+                            onChange={handleChange}
+                            aria-describedby="nicknamelHelp" />
+                        <div id="nicknamelHelp" className="form-text">Teléfono de contacto obligatorio</div>
+                    </div>
+
+                    <div className="col-xs-12 col-sm-6 mb-3">
+                        <label htmlFor="nickname" className="form-label">E-mail*</label>
+                        <input
+                            type="email"
+                            className="form-control"
+                            id="email"
+                            name="email"
+                            placeholder='Con este nombre se te identificará'
+                            onChange={handleChange}
+                            aria-describedby="emaillHelp" />
+                        <div id="emaillHelp" className="form-text">Email es obligatório</div>
+                    </div>
                 </div>
 
-                <div className="mb-3">
-                    <label htmlFor="lastname" className="form-label">Apellido</label>
-                    <input
-                        type="text"
-                        className="form-control"
-                        id="lastname"
-                        name="lastname"
-                        placeholder='Ingrese su Apellido'
-                        onChange={handleChange}
-                        aria-describedby="lastnamelHelp" />
-                </div>
 
-                <div className="mb-3">
-                    <label htmlFor="email" className="form-label">Correo Electrónico</label>
-                    <input
-                        type="email"
-                        className="form-control"
-                        id="email"
-                        name="email"
-                        placeholder='Ingrese su Email'
-                        onChange={handleChange} />
-                </div>
+                <button type="submit" className="btn btn-primary">Enviár</button>
 
-                <div className="mb-3">
-                    <label htmlFor="password" className="form-label">Contraseña</label>
-                    <input
-                        type="password"
-                        className="form-control"
-                        id="password"
-                        name="password"
-                        placeholder='Ingrese contraseña'
-                        onChange={handleChange} />
-                </div>
-
-                <button type="submit" className="btn btn-primary">Submit</button>
             </form>
-
         </div>
+
     )
 }
