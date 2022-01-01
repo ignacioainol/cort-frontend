@@ -1,6 +1,6 @@
 {
   "name": "escort-frontend",
-  "proxy": "https://api-system-escort.herokuapp.com",
+  "proxy": "https://api-system-escort.herokuapp.com/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
