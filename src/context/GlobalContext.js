@@ -1,6 +1,7 @@
-import { createContext } from "react";
+import { createContext, useReducer } from "react";
+import appReducer from './AppReducer';
 
-export const GlobalContext = createContext({
+const initialState = {
     escorts: [
         {
             id: "1",
@@ -17,32 +18,47 @@ export const GlobalContext = createContext({
             description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero optio a laudantium, aliquam nihil ipsum quaerat ullam error itaque recusandae veniam eaque quibusdam blanditiis maiores eveniet voluptates dolore unde impedit!"
         },
         {
-            id: "2",
+            id: "3",
             nickname: "Escort 3",
             age: "34 años",
             avatar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWm6JniQEzVTeG_w39CxXd5aMcQUyNLG1p6Q&usqp=CAU",
             description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero optio a laudantium, aliquam nihil ipsum quaerat ullam error itaque recusandae veniam eaque quibusdam blanditiis maiores eveniet voluptates dolore unde impedit!"
         },
         {
-            id: "2",
+            id: "4",
             nickname: "Escort 4",
             age: "34 años",
             avatar: "https://pbs.twimg.com/media/C4qjJvYVcAAQ_IY.jpg",
             description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero optio a laudantium, aliquam nihil ipsum quaerat ullam error itaque recusandae veniam eaque quibusdam blanditiis maiores eveniet voluptates dolore unde impedit!"
         },
         {
-            id: "2",
+            id: "5",
             nickname: "Escort 5",
             age: "34 años",
             avatar: "https://i.ebayimg.com/images/g/pLAAAOSwTSlc84zE/s-l400.jpg",
             description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero optio a laudantium, aliquam nihil ipsum quaerat ullam error itaque recusandae veniam eaque quibusdam blanditiis maiores eveniet voluptates dolore unde impedit!"
         },
         {
-            id: "2",
+            id: "6",
             nickname: "Escort 6",
             age: "34 años",
             avatar: "https://img4.hotnessrater.com/6335267/alexis-monroe-lingerie.jpg",
             description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero optio a laudantium, aliquam nihil ipsum quaerat ullam error itaque recusandae veniam eaque quibusdam blanditiis maiores eveniet voluptates dolore unde impedit!"
         },
     ]
-})
+}
+
+export const GlobalContext = createContext(initialState);
+
+export const ContextProvider = ({ children }) => {
+
+    const [state, dispatch] = useReducer(appReducer, initialState);
+
+    const addEscort = (escort) => {
+        dispatch({ type: 'ADD_ESCORT', payload: { id: 3, nickname: 'new escort' } });
+    }
+
+    return <GlobalContext.Provider value={{ ...state, addEscort }}>
+        {children}
+    </GlobalContext.Provider>
+}

@@ -7,7 +7,7 @@ export const Card = ({ nickname, avatar, age, description }) => {
             <div className="card mb-3">
                 <h3 className="card-header">{nickname}</h3>
 
-                <div className="avatar" style={{ 'backgroundImage': `url(${avatar})` }}></div>
+                <div className="avatar" style={{ 'backgroundImage': `url(images/${avatar})` }}></div>
 
                 <div className="card-body">
                     <p className="card-text">
@@ -15,7 +15,7 @@ export const Card = ({ nickname, avatar, age, description }) => {
                         of the card's content.
                     </p>
                 </div>
-                <div className="card-footer text-muted">2 days ago</div>
+                <div className="card-footer text-muted">{age} añitos</div>
             </div>
         </>
     )

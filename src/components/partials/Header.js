@@ -16,13 +16,13 @@ export const Header = () => {
                 <div className="collapse navbar-collapse" id="navbarColor01">
                     <ul className="navbar-nav me-auto">
                         <li className="nav-item">
-                            <NavLink to="/" activeClassName="active" className='nav-link'>Home</NavLink>
+                            <NavLink to="/" activeclassname="active" className='nav-link'>Home</NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink to="/register" activeClassName="active" className='nav-link'>Publícate Acá!</NavLink>
+                            <NavLink to="/register" activeclassname="active" className='nav-link'>Publícate Acá!</NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink to="/login" activeClassName="active" className='nav-link'>Inicia Sesión</NavLink>
+                            <NavLink to="/login" activeclassname="active" className='nav-link'>Inicia Sesión</NavLink>
                         </li>
                     </ul>
                     <form className="d-flex">
