@@ -9,3 +9,17 @@
     width: 2em ;
     margin-left: 1em;
 }
+
+.infoEscort{
+    display: none;
+}
+
+.loading-component{
+    left: 50%;
+    top: 50%;
+    margin: 0;
+    position: absolute;
+    margin: 0 auto;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+}
