@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './shared.css';
 
 export const Card = ({ nickname, avatar, age, description }) => {
