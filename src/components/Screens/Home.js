@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react'
+import { API_REST } from '../../constants/base_uri';
 // import { GlobalContext } from '../../context/GlobalContext'
 import { Card } from '../shared/Card';
 import { Loading } from '../shared/Loading';
@@ -12,7 +13,7 @@ export const Home = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const { data } = await axios.get('/api/users/escorts');
+      const { data } = await axios.get(`${API_REST}users/escorts`);
       setEscorts(data);
       setloading(false);
     }

@@ -5,13 +5,23 @@
 .active{
     border-bottom: 1.4px solid white;
 }
+.avatar{
+    cursor: pointer;
+}
 .kissImg{
     width: 2em ;
     margin-left: 1em;
 }
 
 .infoEscort{
-    display: none;
+    /* display: none; */
+    left: 8em;
+    position: absolute;
+    top: 15em;
+    width: 18rem;
+    z-index: 1;
+    background-color: #e91e63;
+    transition: all .5s linear;
 }
 
 .loading-component{
