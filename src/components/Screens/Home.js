@@ -1,43 +1,33 @@
-import axios from 'axios';
-import React, { useContext, useEffect, useState } from 'react'
-import { API_REST } from '../../constants/base_uri';
-// import { GlobalContext } from '../../context/GlobalContext'
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { listEscorts } from '../../actions/escortActions';
 import { Card } from '../shared/Card';
 import { Loading } from '../shared/Loading';
 
 export const Home = () => {
-  // const { escorts } = useContext(GlobalContext);
 
-  const [escorts, setEscorts] = useState([]);
-  const [loading, setloading] = useState(true);
+  const escortList = useSelector(state => state.escortList);
+  const { escorts, loading, error } = escortList;
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    const fetchData = async () => {
-      const { data } = await axios.get(`${API_REST}users/escorts`);
-      setEscorts(data);
-      setloading(false);
-    }
-    fetchData();
-    return () => {
-      //
-    }
+    dispatch(listEscorts());
   }, [])
   return (
     <div className='container'>
 
-      {loading &&
-        <Loading />
+      {loading ? <Loading /> : error ? <div>{error}</div> :
+        <div className="row mt-3">
+          {
+            escorts.map((escort) => (
+              <div className="col-xs-12 col-sm-4 col-md-3" key={escort.user_id}>
+                <Card {...escort} />
+              </div>
+            ))
+          }
+        </div>
       }
 
-      <div className="row mt-3">
-        {
-          escorts.map((escort) => (
-            <div className="col-xs-12 col-sm-4 col-md-3" key={escort.user_id}>
-              <Card {...escort} />
-            </div>
-          ))
-        }
-      </div>
     </div>
   )
 }
