@@ -1,4 +1,4 @@
-import { ESCORTS_LIST_FAIL, ESCORTS_LIST_REQUEST, ESCORTS_LIST_SUCCESS } from "../constants/escortConstants";
+import { ESCORTS_LIST_FAIL, ESCORTS_LIST_REQUEST, ESCORTS_LIST_SUCCESS, ESCORT_REGISTER_FAIL, ESCORT_REGISTER_REQUEST, ESCORT_REGISTER_SUCCESS } from "../constants/escortConstants";
 
 
 function escortListReducer(state = { escorts: [] }, action) {
@@ -14,6 +14,20 @@ function escortListReducer(state = { escorts: [] }, action) {
     }
 }
 
+function escortRegisterReducer(state = {}, action) {
+    switch (action.type) {
+        case ESCORT_REGISTER_REQUEST:
+            return { loading: true };
+        case ESCORT_REGISTER_SUCCESS:
+            return { loading: false, escortInfo: action.payload };
+        case ESCORT_REGISTER_FAIL:
+            return { loading: false, error: action.payload };
+        default:
+            return state;
+    }
+}
+
 export {
-    escortListReducer
+    escortListReducer,
+    escortRegisterReducer
 }

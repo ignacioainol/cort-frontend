@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { listEscorts } from '../../actions/escortActions';
 import { Card } from '../shared/Card';
@@ -12,7 +12,11 @@ export const Home = () => {
 
   useEffect(() => {
     dispatch(listEscorts());
-  }, [])
+    return () => {
+      //
+    }
+  }, [dispatch]);
+
   return (
     <div className='container'>
 

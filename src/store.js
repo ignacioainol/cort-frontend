@@ -1,12 +1,17 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import Cookie from 'js-cookie';
-import { escortListReducer } from './reducers/escortReducers';
+import { escortListReducer, escortRegisterReducer } from './reducers/escortReducers';
+import { userSiginReducer } from './reducers/userReducers';
 
-const initialState = {};
+const userInfo = Cookie.getJSON('userInfo') || null;
+
+const initialState = { userSignin: { userInfo } };
 
 const reducer = combineReducers({
-    escortList: escortListReducer
+    escortList: escortListReducer,
+    escortRegister: escortRegisterReducer,
+    userSignin: userSiginReducer
 });
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
