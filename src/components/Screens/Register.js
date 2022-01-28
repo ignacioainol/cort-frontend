@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { registerEscort } from '../../actions/escortActions';
+import { listRegions } from '../../actions/regionActions';
 import { Loading } from '../shared/Loading';
 
 export const Register = () => {
+
 
     const [newEscort, setNewEscort] = useState({
         role_id: 3,
@@ -18,6 +20,13 @@ export const Register = () => {
     const escortRegister = useSelector(state => state.escortRegister);
     const { loading, escortInfo, error } = escortRegister;
     const dispatch = useDispatch();
+
+    const regionsList = useSelector(state => state.regionsList);
+    console.log(regionsList);
+
+    useEffect(() => {
+        dispatch(listRegions);
+    }, []);
 
     const handleChange = e => {
         setNewEscort({ ...newEscort, [e.target.name]: e.target.value });

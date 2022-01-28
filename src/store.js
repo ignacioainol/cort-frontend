@@ -1,8 +1,9 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import Cookie from 'js-cookie';
-import { escortListReducer, escortRegisterReducer } from './reducers/escortReducers';
 import { userSiginReducer } from './reducers/userReducers';
+import { escortListReducer, escortRegisterReducer } from './reducers/escortReducers';
+import { regionsListReducer } from './reducers/regionReducers';
 
 const userInfo = Cookie.getJSON('userInfo') || null;
 
@@ -10,6 +11,7 @@ const initialState = { userSignin: { userInfo } };
 
 const reducer = combineReducers({
     escortList: escortListReducer,
+    regionsList: regionsListReducer,
     escortRegister: escortRegisterReducer,
     userSignin: userSiginReducer
 });
