@@ -6,7 +6,6 @@ import { Loading } from '../shared/Loading';
 
 export const Register = () => {
 
-
     const [newEscort, setNewEscort] = useState({
         role_id: 3,
         nickname: '',
