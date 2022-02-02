@@ -24,4 +24,4 @@ yarn-error.log*
 
 # envoroments variables
 config_var.sh
-.env
+#.env
