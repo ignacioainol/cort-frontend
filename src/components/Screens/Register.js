@@ -40,7 +40,7 @@ export const Register = () => {
         <div className='container p-4'>
             {loading ? <Loading /> :
                 error ? <div>{error}</div> :
-                    escortInfo ? <div>Nos contactaremos contigo para habilitar su publicación</div> :
+                    escortInfo ? <div><h2 className='animate__animated animate__flipInX'>Nos contactaremos contigo para habilitar su publicación. Le enviaremos su clave de acceso al email ingresado.</h2> </div> :
                         <div>
                             <h3 className='animate__animated animate__bounceInLeft'>Regístrate</h3>
                             <form onSubmit={handleSubmit}>
