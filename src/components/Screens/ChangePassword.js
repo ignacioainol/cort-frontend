@@ -10,14 +10,23 @@ export const ChangePassword = () => {
     const userSignin = useSelector(state => state.userSignin);
     const { userInfo } = userSignin;
 
+    const changePassword = useSelector(state => state.changePassword);
+    const { loading, data, error } = changePassword;
+
     useEffect(() => {
+        console.log(data);
         if (!userInfo) {
-            navigate('/');
+            navigate('/login');
         }
-    }, []);
+
+        if (data) {
+            navigate(`/perfil/${userInfo.user_id}`);
+        }
+    }, [data]);
+
 
     const [changePasswordData, setChangePasswordData] = useState({
-        user_id: userInfo.user_id,
+        user_id: userInfo?.user_id || null,
         password: '',
         newPassword: '',
         confirmNewPassword: ''
@@ -35,21 +44,14 @@ export const ChangePassword = () => {
         dispatch(updatePassword(changePasswordData));
     }
 
-    const changePassword = useSelector(state => state.changePassword);
-    // const { loadingChangePass, dataChangePass, errorChangePass } = changePassword;
-    console.log(changePassword);
-
-    useEffect(() => {
-        console.log(changePassword);
-    }, []);
-
     return (
         <div className='container p-4'>
             <div className='col-md-6 offset-md-3'>
                 <h3 className='animate__animated animate__bounceInLeft'>Actualiza tu contraseña</h3>
-                {/* {errorChangePass && <p id="errorMessage">{errorChangePass}</p>} */}
                 <form onSubmit={handleSubmit}>
-
+                    {error && <div className="alert alert-danger" role="alert">
+                        {error}
+                    </div>}
                     <div className="row">
                         <div className="col-xs-12 col-sm-12 mb-3">
                             <label htmlFor="password" className="form-label">Contraseña Actual</label>

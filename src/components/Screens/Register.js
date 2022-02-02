@@ -21,7 +21,6 @@ export const Register = () => {
     const dispatch = useDispatch();
 
     const regionsList = useSelector(state => state.regionsList);
-    console.log(regionsList);
 
     useEffect(() => {
         dispatch(listRegions);

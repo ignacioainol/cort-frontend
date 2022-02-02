@@ -24,14 +24,21 @@ const signin = (loginData) => async (dispatch) => {
 }
 
 const updatePassword = (changePasswordData) => async (dispatch) => {
-    console.log(changePasswordData);
     const { user_id, password, newPassword, confirmNewPassword } = changePasswordData;
     dispatch({ type: CHANGE_PASSWORD_REQUEST, payload: { user_id, password, newPassword, confirmNewPassword } });
     try {
         const { data } = await axios.post(`${API_REST}users/changePassword`, { user_id, password, newPassword, confirmNewPassword });
         dispatch({ type: CHANGE_PASSWORD_SUCCESS, payload: data });
+        Cookie.set('userInfo', JSON.stringify(data));
     } catch (error) {
-        dispatch({ type: CHANGE_PASSWORD_FAIL, payload: error.message });
+        dispatch({
+            type: CHANGE_PASSWORD_FAIL,
+            payload:
+                error.message && error.response.data.message
+                    ? error.response.data.message :
+                    error.message
+
+        });
     }
 }
 

@@ -19,7 +19,6 @@ export const Login = (props) => {
 
     useEffect(() => {
         if (userInfo) {
-            console.log(userInfo);
             if (userInfo.first_login) {
                 navigate("/changePassword");
             } else {
