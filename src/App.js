@@ -7,6 +7,7 @@ import { Register } from './components/Screens/Register';
 import { ContextProvider } from './context/GlobalContext';
 import { Perfil } from './components/Screens/Perfil';
 import { ChangePassword } from './components/Screens/ChangePassword';
+import { MyProfile } from './components/Screens/MyProfile';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/login" element={<Login />}></Route>
           <Route path="/perfil/:id" element={<Perfil />}></Route>
           <Route path="/changePassword" element={<ChangePassword />}></Route>
+          <Route path="/myprofile" element={<MyProfile />}></Route>
         </Routes>
       </ContextProvider>
     </div>

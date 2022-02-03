@@ -22,7 +22,7 @@ export const Login = (props) => {
             if (userInfo.first_login) {
                 navigate("/changePassword");
             } else {
-                navigate(`/perfil/${userInfo.user_id}`);
+                navigate(`/myprofile`);
             }
         }
     }, [userInfo]);

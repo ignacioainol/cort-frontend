@@ -20,7 +20,7 @@ export const ChangePassword = () => {
         }
 
         if (data) {
-            navigate(`/perfil/${userInfo.user_id}`);
+            navigate(`/myprofile`);
         }
     }, [data]);
 

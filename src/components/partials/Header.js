@@ -47,8 +47,18 @@ export const Header = () => {
 
                     {userInfo &&
                         <ul className="navbar-nav me-right">
-                            <li className="nav-item">
-                                <span activeclassname="active" onClick={handleLogout} className='nav-link logout'>Cerrar Sesión</span>
+                            <li className="nav-item dropdown">
+                                {/* <span activeclassname="active" onClick={handleLogout} className='nav-link logout'>Cerrar Sesión</span> */}
+                                <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">{userInfo.nickname}</a>
+                                <div className="dropdown-menu mLeft">
+                                    {/* <a className="dropdown-item" href="#">Mi Perfíl</a> */}
+                                    <Link to="/myprofile" className="dropdown-item">
+                                        Mi Perfil
+                                    </Link>
+                                    <a className="dropdown-item" onClick={handleLogout} href="#">Cerrar Sesión</a>
+                                    {/* <div className="dropdown-divider"></div>
+                                    <a className="dropdown-item" href="#">Separated link</a> */}
+                                </div>
                             </li>
                         </ul>
                     }
