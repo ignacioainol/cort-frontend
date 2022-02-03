@@ -1,8 +1,18 @@
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, NavLink } from 'react-router-dom';
+import { signout } from '../../actions/userActions';
 import blackkiss from '../../assets/images/black_kiss.png';
 
 export const Header = () => {
+    const dispatch = useDispatch();
+    const userSignin = useSelector(state => state.userSignin);
+    const { userInfo } = userSignin;
+
+    const handleLogout = () => {
+        dispatch(signout());
+    }
+
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
             <div className="container-fluid ">
@@ -18,17 +28,30 @@ export const Header = () => {
                         <li className="nav-item">
                             <NavLink to="/" activeclassname="active" className='nav-link'>Home</NavLink>
                         </li>
-                        <li className="nav-item">
-                            <NavLink to="/register" activeclassname="active" className='nav-link'>Publícate Acá!</NavLink>
-                        </li>
-                        <li className="nav-item">
-                            <NavLink to="/login" activeclassname="active" className='nav-link'>Inicia Sesión</NavLink>
-                        </li>
+                        {!userInfo &&
+                            <li className="nav-item">
+                                <NavLink to="/register" activeclassname="active" className='nav-link'>Publícate Acá!</NavLink>
+                            </li>
+                        }
+
+                        {!userInfo &&
+                            <li className="nav-item">
+                                <NavLink to="/login" activeclassname="active" className='nav-link'>Inicia Sesión</NavLink>
+                            </li>
+                        }
                     </ul>
-                    <form className="d-flex">
+                    {/* <form className="d-flex">
                         <input className="form-control me-sm-2" type="text" placeholder="Search" />
                         <button className="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-                    </form>
+                    </form> */}
+
+                    {userInfo &&
+                        <ul className="navbar-nav me-right">
+                            <li className="nav-item">
+                                <span activeclassname="active" onClick={handleLogout} className='nav-link logout'>Cerrar Sesión</span>
+                            </li>
+                        </ul>
+                    }
                 </div>
             </div>
         </nav>

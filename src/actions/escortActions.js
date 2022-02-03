@@ -19,7 +19,6 @@ const registerEscort = (escort) => async (dispatch) => {
 
         const { data } = await axios.post(`${API_REST}users/escorts`, escort);
         dispatch({ type: ESCORT_REGISTER_SUCCESS, payload: data });
-        Cookie.set('escortInfo', JSON.stringify(data));
     } catch (error) {
         dispatch({ type: ESCORT_REGISTER_FAIL, payload: error.message });
     }

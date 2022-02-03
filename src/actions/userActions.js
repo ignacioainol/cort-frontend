@@ -1,6 +1,14 @@
 import axios from "axios";
 import Cookie from 'js-cookie';
-import { CHANGE_PASSWORD_FAIL, CHANGE_PASSWORD_REQUEST, CHANGE_PASSWORD_SUCCESS, USER_SIGIN_FAIL, USER_SIGIN_REQUEST, USER_SIGIN_SUCCESS } from "../constants/userConstants";
+import {
+    CHANGE_PASSWORD_FAIL,
+    CHANGE_PASSWORD_REQUEST,
+    CHANGE_PASSWORD_SUCCESS,
+    USER_LOGOUT,
+    USER_SIGIN_FAIL,
+    USER_SIGIN_REQUEST,
+    USER_SIGIN_SUCCESS
+} from "../constants/userConstants";
 import { API_REST } from "../constants/base_uri";
 
 const signin = (loginData) => async (dispatch) => {
@@ -42,7 +50,14 @@ const updatePassword = (changePasswordData) => async (dispatch) => {
     }
 }
 
+const signout = () => async (dispatch) => {
+    Cookie.remove('userInfo');
+    dispatch({ type: USER_LOGOUT });
+    document.location.href = '/';
+}
+
 export {
     signin,
-    updatePassword
+    updatePassword,
+    signout
 }
