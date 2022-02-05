@@ -4,6 +4,9 @@ import {
     CHANGE_PASSWORD_FAIL,
     CHANGE_PASSWORD_REQUEST,
     CHANGE_PASSWORD_SUCCESS,
+    USER_CHANGE_AVATAR_FAIL,
+    USER_CHANGE_AVATAR_REQUEST,
+    USER_CHANGE_AVATAR_SUCCESS,
     USER_LOGOUT,
     USER_SIGIN_FAIL,
     USER_SIGIN_REQUEST,
@@ -56,8 +59,23 @@ const signout = () => async (dispatch) => {
     document.location.href = '/';
 }
 
+const changeUserAvatar = (file) => async (dispatch) => {
+    try {
+        dispatch({ type: USER_CHANGE_AVATAR_REQUEST, payload: file });
+        const { data } = await axios.post(`${API_REST}users/changeAvatar`, file, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        });
+        dispatch({ type: USER_CHANGE_AVATAR_SUCCESS, payload: data });
+    } catch (error) {
+        dispatch({ type: USER_CHANGE_AVATAR_FAIL, payload: error.message });
+    }
+}
+
 export {
     signin,
     updatePassword,
-    signout
+    signout,
+    changeUserAvatar
 }

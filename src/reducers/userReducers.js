@@ -1,4 +1,4 @@
-import { CHANGE_PASSWORD_FAIL, CHANGE_PASSWORD_REQUEST, CHANGE_PASSWORD_SUCCESS, USER_SIGIN_FAIL, USER_SIGIN_REQUEST, USER_SIGIN_SUCCESS } from "../constants/userConstants";
+import { CHANGE_PASSWORD_FAIL, CHANGE_PASSWORD_REQUEST, CHANGE_PASSWORD_SUCCESS, USER_CHANGE_AVATAR_REQUEST, USER_CHANGE_AVATAR_SUCCESS, USER_SIGIN_FAIL, USER_SIGIN_REQUEST, USER_SIGIN_SUCCESS } from "../constants/userConstants";
 
 function userSiginReducer(state = {}, action) {
     switch (action.type) {
@@ -27,7 +27,21 @@ function changePasswordReducer(state = {}, action) {
     }
 }
 
+function changeAvatarReducer(state = {}, action) {
+    switch (action.type) {
+        case USER_CHANGE_AVATAR_REQUEST:
+            return { loading: true }
+        case USER_CHANGE_AVATAR_SUCCESS:
+            return { loading: false, data: action.payload }
+        case CHANGE_PASSWORD_FAIL:
+            return { loading: false, error: action.payload }
+        default:
+            return state
+    }
+}
+
 export {
     userSiginReducer,
-    changePasswordReducer
+    changePasswordReducer,
+    changeAvatarReducer
 }

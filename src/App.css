@@ -39,3 +39,25 @@
 .mLeft{
     margin-left: -3em;
 }
+.img-wrap{
+    position: relative;
+    width: 35em;
+}
+.img-description{
+    cursor: pointer;
+    visibility: hidden;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    height: 100%;
+    text-align: center;
+    background: rgba(29, 106, 154, 0.72);
+}
+.img-description p{
+    padding-top: 25%;
+}
+
+.img-wrap:hover .img-description{
+    visibility: visible;
+    opacity: 1;
+}

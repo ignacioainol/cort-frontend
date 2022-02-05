@@ -1,7 +1,7 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import Cookie from 'js-cookie';
-import { changePasswordReducer, userSiginReducer } from './reducers/userReducers';
+import { changeAvatarReducer, changePasswordReducer, userSiginReducer } from './reducers/userReducers';
 import { escortListReducer, escortRegisterReducer } from './reducers/escortReducers';
 import { regionsListReducer } from './reducers/regionReducers';
 
@@ -14,7 +14,8 @@ const reducer = combineReducers({
     regionsList: regionsListReducer,
     escortRegister: escortRegisterReducer,
     userSignin: userSiginReducer,
-    changePassword: changePasswordReducer
+    changePassword: changePasswordReducer,
+    changeAvatar: changeAvatarReducer
 });
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
