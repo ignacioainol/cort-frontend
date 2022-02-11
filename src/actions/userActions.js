@@ -65,7 +65,8 @@ const changeUserAvatar = (file) => async (dispatch) => {
         const { data } = await axios.post(`${API_REST}users/changeAvatar`, file, {
             headers: {
                 'Content-Type': 'multipart/form-data'
-            }
+            },
+            mode: 'cors'
         });
         console.log("paso por userActions? 2!");
         dispatch({ type: USER_CHANGE_AVATAR_SUCCESS, payload: data });
