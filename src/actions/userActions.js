@@ -67,7 +67,9 @@ const changeUserAvatar = (file) => async (dispatch) => {
                 'Content-Type': 'multipart/form-data'
             }
         });
+        console.log("paso por userActions? 2!");
         dispatch({ type: USER_CHANGE_AVATAR_SUCCESS, payload: data });
+        Cookie.set('userInfo', JSON.stringify(data));
     } catch (error) {
         dispatch({ type: USER_CHANGE_AVATAR_FAIL, payload: error.message });
     }
